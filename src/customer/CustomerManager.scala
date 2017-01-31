@@ -17,14 +17,19 @@ class CustomerManager() {
 object CustomerManager {
   def main(args: Array[String]): Unit = {
     val customerManager = new CustomerManager()
-    customerManager.addCustomer(new Customer("Norm1","Norm2"))
-    customerManager.addCustomer(new Customer("Norm3","Norm6"))
-    customerManager.addCustomer(new Customer("Norm4","Norm7"))
-    customerManager.addCustomer(new Customer("Norm5","Norm8"))
-    customerManager.addCustomer(new DiscountedCustomer("Norm1","Norm2"))
-    customerManager.addCustomer(new DiscountedCustomer("Norm3","Norm6"))
-    customerManager.addCustomer(new DiscountedCustomer("Norm4","Norm7"))
-    customerManager.addCustomer(new DiscountedCustomer("Norm5","Norm8"))
+    val customer1 = new Customer("Norm1","Norm2")
+    customer1.cart.addItem(10)
+    customer1.cart.addItem(20)
+    customer1.cart.addItem(30)
+    customer1.cart.addItem(40)
+    customerManager.addCustomer(customer1)
+    val customer2 = new DiscountedCustomer("Norm1","Norm2")
+    customer2.cart.addItem(10)
+    customer2.cart.addItem(20)
+    customer2.cart.addItem(30)
+    customer2.cart.addItem(40)
+    customerManager.addCustomer(customer2)
+    customerManager.customerList.foreach(customerF =>println("balance: " + customerF.total)    )
     print(customerManager.customerList)
 
   }
